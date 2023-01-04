@@ -12,10 +12,10 @@ const isValidToken = ({ token }) =>
 
 const attachCookiesToResponse = ({ res, user }) => {
   const token = createJWT({ payload: user });
-  const fiveMinutes = 1000 * 60 * 5;
+  const twoMinutes = 1000 * 60 * 2;
   res.cookie("token", token, {
     httpOnly: true,
-    expiresIn: new Date(Date.now() + fiveMinutes),
+    expiresIn: new Date(Date.now() + twoMinutes),
     secure: process.env.NODE_ENV === "production",
     signed: true,
   });
